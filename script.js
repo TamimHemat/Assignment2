@@ -40,3 +40,49 @@ function renderIndex(contactList){
     }
 }
 
+function insertDOMCreate(contact = contactList[1]){
+    return `
+    <div class="contactedit">
+    <div class="contactimg">
+        <img src="./img/profile.jpg" class ="profilepic" alt="Profile picture">
+    </div>
+    <div class="form">
+        <form>
+            <div class="inputcontainer">
+                <input type="text" id="contactname" name="contactname" placeholder='${contact.name}'>
+                <button class="extrafield" id="extranamefield" name="extranamefield">+</button>
+            </div>
+            <div class="inputcontainer">
+                <input type="tel" id="contactphone" name="contactphone" placeholder="${contact.phone}">
+                <button class="extrafield" id="extraphonefield" name="extraphonefield">+</button>
+            </div>
+            <div class="inputcontainer">
+                <input type="text" id="contactaddress" name="contactaddress" placeholder="${contact.address}">
+                <button class="extrafield" id="extraaddressfield" name="extraaddressfield">+</button>
+            </div>
+            
+            <div class="inputcontainer">
+                <input type="email" id="contactemail" name="contactemail" placeholder="${contact.email}">
+                <button class="extrafield" id="extraemailfield" name="extraemailfield">+</button>
+            </div>
+            <div class="buttons">
+                <button type="submit" class="button save" id="savecontact" name="savecontact">Save Contact</button>
+                <button type="reset" class="button cancel" id="cancel" name="cancel">Cancel</button>
+            </div>
+        </form>
+    </div>
+    </div>
+    
+    `
+}
+
+function cleanUpCreate(){
+    const clean = document.querySelector('div.contactedit')
+    clean.remove()
+}
+
+function renderCreate(){
+    const section = document.querySelector('.main')
+    section.insertAdjacentHTML('afterbegin',insertDOMCreate())
+}
+
