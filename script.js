@@ -86,3 +86,31 @@ function renderCreate(){
     section.insertAdjacentHTML('afterbegin',insertDOMCreate())
 }
 
+
+function insertDOMView(contact){
+    return `
+    <div class="contactinfo">
+            <div class="contactname">
+                ${contact.name}
+                <img src="./img/profile.jpg" class="profilepic" alt="Profile picture">
+            </div>
+            <div class="contactemail">email: ${contact.email}</div>
+            <div class="contactphone">cell: ${contact.phone}</div>
+            <div class="contactaddress">address: ${contact.address}</div>
+            <div class="buttons">
+                <button class="button edit" value="Edit">Edit</button>
+                <button class="button close" value="Close">Close</button>
+            </div>
+        </div>
+    `
+}
+
+function cleanUpView(){
+    const clean = document.querySelector('div.contactinfo')
+    clean.remove()
+}
+
+function renderView(contact){
+    const section = document.querySelector('.main')
+    section.insertAdjacentHTML("afterbegin",insertDOMView(contact))
+}
